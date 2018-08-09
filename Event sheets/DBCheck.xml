@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>DBCheck</name>
+    <events>
+        <comment>DB Check</comment>
+        <event-block sid="641638592685120">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="842476798526574" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Check item exists" sid="782147515931819" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>If Missing, Create</comment>
+        <event-block sid="362819702110225">
+            <conditions>
+                <condition id="10" name="On item missing" sid="845644982018610" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set item" sid="590502004362203" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                    <param id="1" name="Value">Cash</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>If Exist, Get</comment>
+        <event-block sid="470355581985131">
+            <conditions>
+                <condition id="9" name="On item exists" sid="458695265642836" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Get item" sid="757158024217553" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Set the value after get</comment>
+        <event-block sid="879124369005912">
+            <conditions>
+                <condition id="1" name="On item get" sid="610959999089844" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="756339819994184" type="System">
+                    <param id="0" name="Variable">Cash</param>
+                    <param id="1" name="Value">LocalStorage.ItemValue</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>_Game</name>
+    <events>
+        <variable constant="0" name="isPaused" sid="272456340681539" static="0" type="number">0</variable>
+        <variable comment="Tutorial Window Condition" constant="0" name="isTutor" sid="437730586655804" static="0" type="number">1</variable>
+        <event-block sid="396242645869833">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="962611765691373" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Pin" id="0" name="Pin to object" sid="918044035921300" type="WdsTutorClose">
+                    <param id="0" name="Pin to">WdsTutorial</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="901327343379307" type="WdsGamePauseClose">
+                    <param id="0" name="Pin to">WdsGamePause</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="381322917123627" type="BtnGamePause">
+                    <param id="0" name="Target is">0</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">1970</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="917916463026446" type="BtnGamePause">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">170</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="839190347898467">
+            <conditions>
+                <condition id="3" name="On touched object" sid="398925926220092" type="Touch">
+                    <param id="0" name="Object">WdsTutorClose</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="508203033620716" type="System">
+                    <param id="0" name="Variable">isTutor</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Fade" id="1" name="Start fade" sid="894825231770659" type="WdsTutorial" />
+                <action behavior="Fade" id="1" name="Start fade" sid="556641350369154" type="WdsTutorClose" />
+                <action id="-9" name="Set value" sid="622208784707424" type="System">
+                    <param id="0" name="Variable">isTutor</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="968795271360410">
+            <conditions>
+                <condition id="3" name="On touched object" sid="330604074425269" type="Touch">
+                    <param id="0" name="Object">BtnGamePause</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="602596848084191" type="WdsGamePause" />
+                <condition id="-14" name="Compare variable" sid="905420207894236" type="System">
+                    <param id="0" name="Variable">isTutor</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="283353915318795" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="10" name="Start" sid="557093833292523" type="WdsGamePause">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="630982858974579" type="WdsGamePause">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">480</param>
+                </action>
+                <action id="-9" name="Set value" sid="101521746473157" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="111313476043792">
+            <conditions>
+                <condition id="3" name="On touched object" sid="694627758890092" type="Touch">
+                    <param id="0" name="Object">WdsGamePauseClose</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="245021400440728" type="WdsGamePause" />
+                <condition id="-14" name="Compare variable" sid="439139233443323" type="System">
+                    <param id="0" name="Variable">isTutor</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="629620045285629" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set time scale" sid="792300056029003" type="System">
+                    <param id="0" name="Time scale">1</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="689668102249355" type="WdsGamePause">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="971665010276022" type="WdsGamePause">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">-121</param>
+                </action>
+                <action id="-9" name="Set value" sid="853500115187639" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="171029404212830">
+            <conditions>
+                <condition behavior="LiteTween" id="4" name="On tween end" sid="535855579754028" type="WdsGamePause" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="739654997958258">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="442549739408485" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="886377525731232" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Audio Silent, Check Needed</comment>
+        <event-block sid="554012739033813">
+            <conditions>
+                <condition id="3" name="On touched object" sid="734767476424080" type="Touch">
+                    <param id="0" name="Object">MuteBGM</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="671637215130297" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="553175167467852">
+                    <conditions>
+                        <condition id="5" inverted="1" name="Is tag playing" sid="185367566849468" type="Audio">
+                            <param id="0" name="Tag">&quot;BGM&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set muted" sid="338665209248031" type="Audio">
+                            <param id="0" name="Tag">&quot;BGM&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="130878737885688">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="862766191240153" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set muted" sid="703597332896601" type="Audio">
+                            <param id="0" name="Tag">&quot;BGM&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="451365795827811">
+            <conditions>
+                <condition id="3" name="On touched object" sid="526758763221197" type="Touch">
+                    <param id="0" name="Object">MuteSFX</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="107230704549142" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="2" name="Set muted" sid="817491660913781" type="Audio">
+                    <param id="0" name="Tag">&quot;SFX&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="911541709895230">
+                    <conditions>
+                        <condition id="5" inverted="1" name="Is tag playing" sid="904243955263857" type="Audio">
+                            <param id="0" name="Tag">&quot;SFX&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set muted" sid="195722029048480" type="Audio">
+                            <param id="0" name="Tag">&quot;BGM&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="223720522191613">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="801615508189071" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set muted" sid="794110640197422" type="Audio">
+                            <param id="0" name="Tag">&quot;BGM&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>_Main Menu</name>
+    <events>
+        <variable comment="EquipedWeapon" constant="0" name="isEquiped" sid="874109605978246" static="0" type="number">0</variable>
+        <include>DBCheck</include>
+        <variable constant="0" name="Cash" sid="338653652087714" static="0" type="number">0</variable>
+        <comment>Windows Condition</comment>
+        <variable constant="0" name="isCredits" sid="541406780490291" static="0" type="number">0</variable>
+        <variable comment="Option Window State" constant="0" name="isShop" sid="711264832983136" static="0" type="number">0</variable>
+        <variable comment="0=Left of Cam; 1=Center Cam; 2=Right of Cam" constant="0" name="TransitionState" sid="656376059967840" static="0" type="number">0</variable>
+        <event-group description="" sid="334862867267485" title="Ads">
+            <sub-events>
+                <event-block sid="117170972924013">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="673964950711619" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Init SDK" sid="258181684508455" type="VooxeGoogleAds" />
+                    </actions>
+                </event-block>
+                <event-block sid="317693299203715">
+                    <conditions>
+                        <condition id="0" name="On function" sid="869292105864297" type="Function">
+                            <param id="0" name="Name">&quot;Ads&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Show Banner" sid="992659389260997" type="VooxeGoogleAds">
+                            <param id="0" name="Key Name">&quot;Ads&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block any="1" sid="677741981472525">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="906632605909731" type="System">
+                    <param id="0" name="Interval (seconds)">20</param>
+                </condition>
+                <condition id="0" name="On key pressed" sid="342894758985962" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="316309971376703" type="System">
+                    <param id="0" name="Object to create">TumblingWeed</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="X">TumbleSpawnPoint.X</param>
+                    <param id="3" name="Y">TumbleSpawnPoint.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="703043839703038">
+            <conditions>
+                <condition id="-18" name="On created" sid="904010266852920" type="TumblingWeed" />
+            </conditions>
+            <actions>
+                <action id="-24" name="Move to top" sid="913310843924461" type="TumblingWeed" />
+                <action behavior="Physics" id="6" name="Apply torque" sid="161704291015981" type="TumblingWeed">
+                    <param id="0" name="Torque">-3500</param>
+                </action>
+                <action behavior="Physics" id="12" name="Set world gravity" sid="167305759545273" type="TumblingWeed">
+                    <param id="0" name="Gravity">1</param>
+                </action>
+                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="545325124488610" type="TumblingWeed">
+                    <param id="0" name="Impulse">6</param>
+                    <param id="1" name="Angle">190</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Reset Tween</comment>
+        <event-block sid="794527039731747">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="833349968578122" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="897315664184466" type="WdsGamePause">
+                    <param id="0" name="Target is">0</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">CenterLayout.X</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="586426535123095" type="WdsGamePause">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">CenterLayout.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Destroy Object</comment>
+        <event-block sid="270253910565443">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="414458000229345" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="365968256972822" type="TumblingWeed" />
+            </actions>
+        </event-block>
+        <comment>Pinned Object</comment>
+        <event-block sid="363425561920153">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="460212351450303" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Pin" id="0" name="Pin to object" sid="364961556278535" type="BtnCloseCredits">
+                    <param id="0" name="Pin to">WdsCredits</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="306349601238088" type="ShpBox">
+                    <param id="0" name="Pin to">WdsShop</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="352528796497193" type="ShpBox2">
+                    <param id="0" name="Pin to">WdsShop</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="464484183119546" type="ShpBox3">
+                    <param id="0" name="Pin to">WdsShop</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="183632921441865" type="ShpBox4">
+                    <param id="0" name="Pin to">WdsShop</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="268442705147987" type="BtnShopClose">
+                    <param id="0" name="Pin to">WdsShop</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="885653465686149" type="ValCash">
+                    <param id="0" name="Pin to">Cash</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="820337857159612" type="BtnGamePause">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="873585068209713" type="BtnBuyWarning">
+                    <param id="0" name="Pin to">WdsBuyWarning</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="455233444687518" type="BtnCancelWarning">
+                    <param id="0" name="Pin to">WdsBuyWarning</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="790265011960970" type="MuteBGM">
+                    <param id="0" name="Pin to">WdsGamePause</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="815640689368797" type="MuteSFX">
+                    <param id="0" name="Pin to">WdsGamePause</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="899617226909323" type="WdsGamePauseClose">
+                    <param id="0" name="Pin to">WdsGamePause</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Call DB</comment>
+        <event-block sid="659805138595295">
+            <conditions>
+                <condition id="1" name="On item get" sid="592963644768021" type="LocalStorage">
+                    <param id="0" name="Key">&quot;Cash&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="547814244517257" type="ValCash">
+                    <param id="0" name="Text">Cash</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="273480733056217">
+            <conditions>
+                <condition id="3" name="On touched object" sid="586863806947016" type="Touch">
+                    <param id="0" name="Object">BtnGamePause</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="607931891571402" type="System">
+                    <param id="0" name="First value">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="395348056133182" type="System">
+                    <param id="0" name="First value">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="514088891867703" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="377244903615815" type="WdsGamePause" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="996513340477394" type="WdsGamePause">
+                    <param id="0" name="Target is">0</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">CenterLayout.X</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="422667226219468" type="WdsGamePause">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">CenterLayout.Y</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="247976417100380" type="WdsGamePause">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="412598659763034">
+            <conditions>
+                <condition id="3" name="On touched object" sid="746864482596664" type="Touch">
+                    <param id="0" name="Object">WdsGamePauseClose</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="157071495031111" type="System">
+                    <param id="0" name="First value">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="922804850233304" type="System">
+                    <param id="0" name="First value">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="961774975604992" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="573056740305475" type="WdsGamePause" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="874452202169933" type="WdsGamePause">
+                    <param id="0" name="Target is">0</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">843</param>
+                </action>
+                <action behavior="LiteTween" id="3" name="Set target" sid="291839367639101" type="WdsGamePause">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value"> -830</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="138099061988108" type="WdsGamePause">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="419445620152895">
+            <conditions>
+                <condition behavior="LiteTween" id="4" name="On tween end" sid="522091760736490" type="WdsGamePause" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="202524894352352">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="662918122583054" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="484195501860340" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="286727991388052">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="728472912018390" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="674333429198458" type="System">
+                            <param id="0" name="Variable">isPaused</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="424472432578367">
+            <conditions>
+                <condition id="3" name="On touched object" sid="426225933413437" type="Touch">
+                    <param id="0" name="Object">BtnStart</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="287957322915662" type="System">
+                    <param id="0" name="First value">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="875316868083587" type="System">
+                    <param id="0" name="First value">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="545202536803551" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="406692553910446" type="Transition" />
+                <condition id="-14" name="Compare variable" sid="856588151362358" type="System">
+                    <param id="0" name="Variable">TransitionState</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="10" name="Start" sid="497225050395858" type="Transition">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="291452387756242" type="System">
+                    <param id="0" name="Variable">TransitionState</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="245392699409589">
+            <conditions>
+                <condition behavior="LiteTween" id="4" name="On tween end" sid="455392777260888" type="Transition" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="945006443616533">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="190389254098555" type="System">
+                            <param id="0" name="Variable">TransitionState</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="161712986589620" type="Title">
+                            <param id="0" name="Pin to">Transition</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="388540354932479" type="BtnStart">
+                            <param id="0" name="Pin to">Transition</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="155009087435513" type="BtnShop">
+                            <param id="0" name="Pin to">Transition</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="225253401970196" type="BtnCredits">
+                            <param id="0" name="Pin to">Transition</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="444472216286341" type="Cash">
+                            <param id="0" name="Pin to">Transition</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="LiteTween" id="3" name="Set target" sid="349722538117349" type="Transition">
+                            <param id="0" name="Target is">0</param>
+                            <param id="1" name="Relativity">0</param>
+                            <param id="2" name="Value">2313</param>
+                        </action>
+                        <action behavior="LiteTween" id="10" name="Start" sid="638449604489351" type="Transition">
+                            <param id="0" name="Start Mode">0</param>
+                            <param id="1" name="Force use current">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="681558346230784" type="System">
+                            <param id="0" name="Variable">TransitionState</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="374871353103663">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="693759000702450" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="842982680546124" type="System">
+                            <param id="0" name="Layout">Game</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="662967561736308">
+            <conditions>
+                <condition id="3" name="On touched object" sid="868154475163553" type="Touch">
+                    <param id="0" name="Object">BtnShop</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="550501311295447" type="System">
+                    <param id="0" name="Variable">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="927169861013074" type="System">
+                    <param id="0" name="First value">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="653553209797696" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="295138358216489" type="WdsShop" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="685167960631252" type="WdsShop">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">480</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="102560160801224" type="WdsShop">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="363303856814377" type="System">
+                    <param id="0" name="Variable">isShop</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="148456251515215">
+            <conditions>
+                <condition id="3" name="On touched object" sid="651636452425950" type="Touch">
+                    <param id="0" name="Object">BtnShopClose</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="876739958457778" type="System">
+                    <param id="0" name="Variable">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="316687079398602" type="System">
+                    <param id="0" name="Variable">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="601693632304548" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="937097536832021" type="WdsShop" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="445818180688871" type="WdsShop">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">-301</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="594668936553139" type="WdsShop">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="704021739421340" type="System">
+                    <param id="0" name="Variable">isShop</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="659910973541055">
+            <conditions>
+                <condition id="3" name="On touched object" sid="320416059200779" type="Touch">
+                    <param id="0" name="Object">BtnCredits</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="590418389441464" type="System">
+                    <param id="0" name="First value">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="362282667996776" type="System">
+                    <param id="0" name="Variable">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="997430170439470" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="825724357710779" type="WdsCredits" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="464809211754620" type="WdsCredits">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">480</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="935194312080158" type="WdsCredits">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="428130939393923" type="System">
+                    <param id="0" name="Variable">isCredits</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="880326086176530">
+            <conditions>
+                <condition id="3" name="On touched object" sid="332250724646558" type="Touch">
+                    <param id="0" name="Object">BtnCloseCredits</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="410276943592423" type="System">
+                    <param id="0" name="First value">isShop</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="968974059322341" type="System">
+                    <param id="0" name="Variable">isCredits</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="277637176986647" type="System">
+                    <param id="0" name="Variable">isPaused</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition behavior="LiteTween" id="0" inverted="1" name="Is active" sid="423154972695786" type="WdsCredits" />
+            </conditions>
+            <actions>
+                <action behavior="LiteTween" id="3" name="Set target" sid="833346706629277" type="WdsCredits">
+                    <param id="0" name="Target is">1</param>
+                    <param id="1" name="Relativity">0</param>
+                    <param id="2" name="Value">1408</param>
+                </action>
+                <action behavior="LiteTween" id="10" name="Start" sid="639750325380666" type="WdsCredits">
+                    <param id="0" name="Start Mode">0</param>
+                    <param id="1" name="Force use current">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="395744861997065" type="System">
+                    <param id="0" name="Variable">isCredits</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="198390070071365" title="Cheats">
+            <sub-events>
+                <event-block sid="898396896331554">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="533796342682941" type="Keyboard">
+                            <param id="0" name="Key">71 (G)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="660272991014531" type="System">
+                            <param id="0" name="Variable">Cash</param>
+                            <param id="1" name="Value">1000</param>
+                        </action>
+                        <action id="0" name="Set item" sid="169132687450479" type="LocalStorage">
+                            <param id="0" name="Key">&quot;Cash&quot;</param>
+                            <param id="1" name="Value">Cash</param>
+                        </action>
+                        <action id="0" name="Set text" sid="473471565661896" type="ValCash">
+                            <param id="0" name="Text">Cash</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="131902413824734">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="161656070039617" type="Keyboard">
+                            <param id="0" name="Key">88 (X)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Clear storage" sid="762135624954092" type="LocalStorage" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

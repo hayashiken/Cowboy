@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2uistate>
+    <!--This is a UI state file - its content describes the user interface settings when the project was last open.
+It is entirely optional and the project will load without it.  If you are placing the project under source control,
+you probably do not want to add any .uistate.xml files to the repository.-->
+    <configurations>
+        <active>
+            <configuration name="HTML5" />
+        </active>
+        <display name="HTML5" />
+    </configurations>
+    <open-tabs>
+        <layout active="1" order="0">Main Menu</layout>
+        <layout order="2">Game</layout>
+        <event-sheet order="1">_Main Menu</event-sheet>
+        <event-sheet order="4">DBCheck</event-sheet>
+        <event-sheet order="3">_Game</event-sheet>
+    </open-tabs>
+    <properties>
+        <property expanded="1" name="About" />
+        <property expanded="1" name="Project settings" />
+        <property expanded="0" name="Window Size" />
+        <property expanded="1" name="Configuration Settings" />
+    </properties>
+    <families-expanded root="1" />
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="object-folder/Image/" />
+        <folder expanded="0" path="object-folder/Image/Interior/" />
+        <folder expanded="1" path="object-folder/Image/Frame/" />
+        <folder expanded="0" path="object-folder/Image/Enemies/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="1" path="sound-folder/" />
+        <folder expanded="1" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="animation-folder/Window1/" />
+        <folder expanded="1" path="animation-folder/Window10/" />
+        <folder expanded="1" path="animation-folder/Window2/" />
+        <folder expanded="1" path="animation-folder/Window3/" />
+        <folder expanded="1" path="animation-folder/Window4/" />
+        <folder expanded="1" path="animation-folder/Window5/" />
+        <folder expanded="1" path="animation-folder/Window6/" />
+        <folder expanded="1" path="animation-folder/Window7/" />
+        <folder expanded="1" path="animation-folder/Window8/" />
+        <folder expanded="1" path="animation-folder/Window9/" />
+        <folder expanded="1" path="animation-folder/Enemy1/" />
+        <folder expanded="1" path="animation-folder/Enemy11/" />
+        <folder expanded="1" path="animation-folder/Saloon/" />
+        <folder expanded="1" path="animation-folder/Cam/" />
+        <folder expanded="1" path="animation-folder/BtnShop/" />
+        <folder expanded="1" path="animation-folder/BtnStart/" />
+        <folder expanded="1" path="animation-folder/WdsShop/" />
+        <folder expanded="1" path="animation-folder/WdsTutorial/" />
+        <folder expanded="1" path="animation-folder/WdsTutorClose/" />
+        <folder expanded="1" path="animation-folder/BtnGamePause/" />
+        <folder expanded="1" path="animation-folder/WdsGamePause/" />
+        <folder expanded="1" path="animation-folder/WdsGamePauseClose/" />
+        <folder expanded="1" path="animation-folder/BtnCredits/" />
+        <folder expanded="1" path="animation-folder/WdsCredits/" />
+        <folder expanded="1" path="animation-folder/BtnCloseCredits/" />
+        <folder expanded="1" path="animation-folder/MuteBGM/" />
+        <folder expanded="1" path="animation-folder/MuteSFX/" />
+        <folder expanded="1" path="animation-folder/Player/" />
+        <folder expanded="1" path="animation-folder/Ground/" />
+        <folder expanded="1" path="animation-folder/Transition/" />
+        <folder expanded="1" path="animation-folder/Title/" />
+        <folder expanded="1" path="animation-folder/SaloonMainMenu/" />
+        <folder expanded="1" path="animation-folder/Land/" />
+        <folder expanded="1" path="animation-folder/Mountain/" />
+        <folder expanded="1" path="animation-folder/Mountain2/" />
+        <folder expanded="1" path="animation-folder/WdsResult/" />
+        <folder expanded="1" path="animation-folder/ResResult/" />
+        <folder expanded="1" path="animation-folder/ResTime/" />
+        <folder expanded="1" path="animation-folder/ResBanditKilled/" />
+        <folder expanded="1" path="animation-folder/ResHostageKilled/" />
+        <folder expanded="1" path="animation-folder/ResAccuracy/" />
+        <folder expanded="1" path="animation-folder/ResCash/" />
+        <folder expanded="1" path="animation-folder/ResBtnClose/" />
+        <folder expanded="1" path="animation-folder/ShpBox/" />
+        <folder expanded="1" path="animation-folder/BtnShopClose/" />
+        <folder expanded="1" path="animation-folder/ShpBox2/" />
+        <folder expanded="1" path="animation-folder/ShpBox3/" />
+        <folder expanded="1" path="animation-folder/ShpBox4/" />
+        <folder expanded="1" path="animation-folder/Cash/" />
+        <folder expanded="1" path="animation-folder/WdsBuyWarning/" />
+        <folder expanded="1" path="animation-folder/BtnBuyWarning/" />
+        <folder expanded="1" path="animation-folder/BtnCancelWarning/" />
+        <folder expanded="1" path="animation-folder/TumblingWeed/" />
+        <folder expanded="1" path="animation-folder/TumbleSpawnPoint/" />
+        <folder expanded="1" path="animation-folder/CenterLayout/" />
+        <folder expanded="1" path="animation-folder/ShpBox5/" />
+        <folder expanded="1" path="animation-folder/ShpBox6/" />
+        <folder expanded="1" path="animation-folder/ShpBox7/" />
+        <folder expanded="1" path="animation-folder/ShpBox8/" />
+        <folder expanded="1" path="animation-folder/ShpBox9/" />
+        <folder expanded="1" path="animation-folder/ShpBox10/" />
+    </folders-expanded>
+</c2uistate>
