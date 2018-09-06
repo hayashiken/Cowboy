@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>_Mechanic</name>
+    <events>
+        <event-group description="" sid="662771290028376" title="Firing Mechanic">
+            <sub-events>
+                <event-block sid="770502883717161">
+                    <conditions>
+                        <condition id="14" name="On tap" sid="309902508788588" type="Touch" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="968711454898976" type="Audio">
+                            <param id="0" name="Audio file">ColtSAA</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="800566949041054" type="Player">
+                            <param id="0" name="Object">PlayerMuzzle</param>
+                            <param id="1" name="Layer">5</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="281326918409886" type="System">
+                            <param id="0" name="Object to create">HitEffect</param>
+                            <param id="1" name="Layer">5</param>
+                            <param id="2" name="X">Touch.X</param>
+                            <param id="3" name="Y">Touch.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="857404729809790" title="Enemy Spawn">
+            <sub-events>
+                <event-block sid="425713340360135">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="521751134940981" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set at X" sid="845858574423844" type="EnemySpawn">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="551322750853898" type="EnemySpawn">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="140189040211699" type="EnemySpawn">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="430588676599440" type="EnemySpawn">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <variable comment="Choose image point" constant="0" name="SpawnPoint" sid="350857199318880" static="0" type="number">1</variable>
+                <comment>Spawn at window</comment>
+                <event-block sid="754719153971589">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="282801490256862" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="738762156935042">
+                            <conditions>
+                                <condition id="-34" name="Pick by evaluate" sid="588419187570281" type="System">
+                                    <param id="0" name="Object">WindowSpawn</param>
+                                    <param id="1" name="Expression">WindowSpawn.Empty</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="228536923324512">
+                                    <conditions>
+                                        <condition id="-16" name="Pick random instance" sid="897470610700609" type="System">
+                                            <param id="0" name="Object">WindowSpawn</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="390454940913726" type="System">
+                                            <param id="0" name="Variable">SpawnPoint</param>
+                                            <param id="1" name="Value">choose(1,2)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="900279625726104">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="446007224822801" type="System">
+                                                    <param id="0" name="Variable">SpawnPoint</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="480794307687408" type="Function">
+                                                    <param id="0" name="Name">&quot;SpawnEnemy&quot;</param>
+                                                    <param id="1" name="Parameter {n}">WindowSpawn.UID{###}SpawnPoint{###}WindowSpawn.Type</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="438692765407279">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="320326719099280" type="System">
+                                                    <param id="0" name="Variable">SpawnPoint</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="903043252760662" type="Function">
+                                                    <param id="0" name="Name">&quot;SpawnEnemy&quot;</param>
+                                                    <param id="1" name="Parameter {n}">WindowSpawn.UID{###}SpawnPoint{###}WindowSpawn.Type</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>Enemy Spawn Function</comment>
+        <event-block sid="843073281975387">
+            <conditions>
+                <condition id="0" name="On function" sid="414376176536556" type="Function">
+                    <param id="0" name="Name">&quot;SpawnEnemy&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable comment="choose enemy" constant="0" name="enemyType" sid="108336520086149" static="0" type="number">0</variable>
+                <event-block sid="405167813865066">
+                    <conditions>
+                        <condition id="-14" name="Pick by unique ID" sid="236270710928358" type="WindowSpawn">
+                            <param id="0" name="Unique ID">Function.Param(0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="765030143296156" type="System">
+                            <param id="0" name="Variable">enemyType</param>
+                            <param id="1" name="Value">choose(0,1,2,3)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="109011759096812">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="624085784408183" type="System">
+                                    <param id="0" name="Variable">enemyType</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="0" name="Compare at X" sid="525637744317105" type="EnemySpawn">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="823499511290211" type="WindowSpawn">
+                                    <param id="0" name="Instance variable">Empty</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="529019546675851" type="WindowSpawn">
+                                    <param id="0" name="Object">PakTo</param>
+                                    <param id="1" name="Layer">3</param>
+                                    <param id="2" name="Image point">Function.Param(1)</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="201876952786112" type="PakTo">
+                                    <param id="0" name="Animation">Function.Param(2)</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="760927424480702" type="PakTo">
+                                    <param id="0" name="Instance variable">Location</param>
+                                    <param id="1" name="Value">Function.Param(2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="160743172303143" type="PakTo">
+                                    <param id="0" name="Instance variable">LocUID</param>
+                                    <param id="1" name="Value">Function.Param(0)</param>
+                                </action>
+                                <action id="2" name="Set at X" sid="279445580048769" type="EnemySpawn">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="525756660346397">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="482266124018111" type="Function">
+                                            <param id="0" name="Index">1</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="944476253034450" type="PakTo">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="878445366303454">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="669652403943047" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="621850879668372" type="PakTo">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="772001845434855">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="161139201495272" type="System">
+                                    <param id="0" name="Variable">enemyType</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="0" name="Compare at X" sid="851664746638597" type="EnemySpawn">
+                                    <param id="0" name="X">1</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="589228636662880" type="WindowSpawn">
+                                    <param id="0" name="Instance variable">Empty</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="953800434441142" type="WindowSpawn">
+                                    <param id="0" name="Object">PakYit</param>
+                                    <param id="1" name="Layer">3</param>
+                                    <param id="2" name="Image point">Function.Param(1)</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="639107501914736" type="PakYit">
+                                    <param id="0" name="Animation">Function.Param(2)</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="353382806666093" type="PakYit">
+                                    <param id="0" name="Instance variable">Location</param>
+                                    <param id="1" name="Value">Function.Param(2)</param>
+                                </action>
+                                <action id="2" name="Set at X" sid="184402562238494" type="EnemySpawn">
+                                    <param id="0" name="X">1</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="590140953983562" type="PakYit">
+                                    <param id="0" name="Instance variable">LocUID</param>
+                                    <param id="1" name="Value">function.Param(0)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="307211249327466">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="170973026131020" type="Function">
+                                            <param id="0" name="Index">1</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="486032201667598" type="PakYit">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="107300047822977">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="111745646919779" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="200987003025038" type="PakYit">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="390074385089595">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="934940044998402" type="System">
+                                    <param id="0" name="Variable">enemyType</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                                <condition id="0" name="Compare at X" sid="814273011296183" type="EnemySpawn">
+                                    <param id="0" name="X">2</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="956686040711068" type="WindowSpawn">
+                                    <param id="0" name="Instance variable">Empty</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="900396613751379" type="WindowSpawn">
+                                    <param id="0" name="Object">PakYon</param>
+                                    <param id="1" name="Layer">3</param>
+                                    <param id="2" name="Image point">Function.Param(1)</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="351516458362720" type="PakYon">
+                                    <param id="0" name="Animation">Function.Param(2)</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="632679976889386" type="PakYon">
+                                    <param id="0" name="Instance variable">Location</param>
+                                    <param id="1" name="Value">Function.Param(2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="578832347052200" type="PakYon">
+                                    <param id="0" name="Instance variable">LocUID</param>
+                                    <param id="1" name="Value">function.Param(0)</param>
+                                </action>
+                                <action id="2" name="Set at X" sid="946961917843235" type="EnemySpawn">
+                                    <param id="0" name="X">2</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="755194560074083">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="245816982258514" type="Function">
+                                            <param id="0" name="Index">1</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="208840236786656" type="PakYon">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="344198186301571">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="111129146429822" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="140272284605017" type="PakYon">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="550955981891596">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="513281709841901" type="System">
+                                    <param id="0" name="Variable">enemyType</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                                <condition id="0" name="Compare at X" sid="421139527898095" type="EnemySpawn">
+                                    <param id="0" name="X">3</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="115396372007039" type="WindowSpawn">
+                                    <param id="0" name="Instance variable">Empty</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="951955965933519" type="WindowSpawn">
+                                    <param id="0" name="Object">Maeda</param>
+                                    <param id="1" name="Layer">3</param>
+                                    <param id="2" name="Image point">Function.Param(1)</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="845448176829979" type="Maeda">
+                                    <param id="0" name="Animation">Function.Param(2)</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="303285360068524" type="Maeda">
+                                    <param id="0" name="Instance variable">Location</param>
+                                    <param id="1" name="Value">Function.Param(2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="114258046692399" type="Maeda">
+                                    <param id="0" name="Instance variable">LocUID</param>
+                                    <param id="1" name="Value">Function.Param(0)</param>
+                                </action>
+                                <action id="25" name="Play at object" sid="119378107303501" type="Audio">
+                                    <param id="0" name="Audio file">Maeda spawn</param>
+                                    <param id="1" name="Loop">0</param>
+                                    <param id="2" name="Volume">0</param>
+                                    <param id="3" name="Object">Maeda</param>
+                                    <param id="4" name="Inner angle">360</param>
+                                    <param id="5" name="Outer angle">360</param>
+                                    <param id="6" name="Outer gain">0</param>
+                                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="2" name="Set at X" sid="178015513576697" type="EnemySpawn">
+                                    <param id="0" name="X">3</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action behavior="Timer" id="0" name="Start timer" sid="266193417204327" type="Maeda">
+                                    <param id="0" name="Duration">2.0</param>
+                                    <param id="1" name="Type">0</param>
+                                    <param id="2" name="Tag">&quot;retreat&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="900408492048122">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="307178524353514" type="Function">
+                                            <param id="0" name="Index">1</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="331212327452341" type="Maeda">
+                                            <param id="0" name="State">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="555762294701780">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="544123024464736" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="7" name="Set mirrored" sid="901862788588862" type="Maeda">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="762479450075620" title="Enemy Attack">
+            <sub-events>
+                <event-block any="1" sid="999514713088785">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="898422297431419" type="DoorEnemy">
+                            <param id="0" name="Animation">&quot;Window&quot;</param>
+                        </condition>
+                        <condition id="4" name="On finished" sid="829962774922203" type="DoorEnemy">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Timer" id="0" name="Start timer" sid="576455244696114" type="DoorEnemy">
+                            <param id="0" name="Duration">random(1,2)</param>
+                            <param id="1" name="Type">1</param>
+                            <param id="2" name="Tag">&quot;Fire&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="216681470463898">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="891299576592412" type="DoorEnemy">
+                            <param id="0" name="Tag">&quot;Fire&quot;</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="515887510470156" type="System">
+                            <param id="0" name="First value">Player.HP</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="350464550144192" type="DoorEnemy">
+                            <param id="0" name="Object">EnemyMuzzle</param>
+                            <param id="1" name="Layer">3</param>
+                            <param id="2" name="Image point">&quot;MuzzleFlash&quot;</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="490695699328003" type="HP">
+                            <param id="0" name="Width">HP.Width-50</param>
+                        </action>
+                        <action id="-12" name="Subtract from" sid="561014994983802" type="Player">
+                            <param id="0" name="Instance variable">HP</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action behavior="ScrollTo" id="0" name="Shake" sid="936998372743849" type="Cam">
+                            <param id="0" name="Magnitude">8</param>
+                            <param id="1" name="Duration">0.4</param>
+                            <param id="2" name="Mode">0</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="951812246582180" type="Flash">
+                            <param id="0" name="&apos;On&apos; time">0.05</param>
+                            <param id="1" name="&apos;Off&apos; time">0.05</param>
+                            <param id="2" name="Duration">0.3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>End Condition</comment>
+                <event-block sid="173857626014141">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="264897399756472" type="DoorEnemy">
+                            <param id="0" name="Tag">&quot;Fire&quot;</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="749822067531217" type="System">
+                            <param id="0" name="First value">Player.HP</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                        <condition id="-5" name="Compare width" sid="357547124044063" type="HP">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Width">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Timer" id="1" name="Stop timer" sid="527369319586621" type="DoorEnemy">
+                            <param id="0" name="Tag">&quot;Fire&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="903787821544171" type="System">
+                            <param id="0" name="Group name">&quot;Enemy Spawn&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="661872290196617">
+                    <conditions>
+                        <condition behavior="Flash" id="1" name="On flash ended" sid="579093860400210" type="Flash" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="327761898203844" type="Flash">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="346614032476513" title="Kill Enemy">
+            <sub-events>
+                <event-block sid="515354479563027">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="719277957568989" type="Touch">
+                            <param id="0" name="Object">DoorEnemy</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="983618122593863" type="DoorEnemy">
+                            <param id="0" name="Animation">DoorEnemy.Location&amp;&quot;Dead&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="759542220950227" type="DoorEnemy">
+                            <param id="0" name="&apos;On&apos; time">0.1</param>
+                            <param id="1" name="&apos;Off&apos; time">0.1</param>
+                            <param id="2" name="Duration">1.0</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="407477953364268" type="EnemySpawn">
+                            <param id="0" name="X">DoorEnemy.tipe</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action behavior="Timer" id="1" name="Stop timer" sid="348081185834002" type="DoorEnemy">
+                            <param id="0" name="Tag">&quot;Fire&quot;</param>
+                        </action>
+                        <action id="28" name="Play at object (by name)" sid="163450689950201" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">str(DoorEnemy.tipe)</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="4" name="Object">DoorEnemy</param>
+                            <param id="5" name="Inner angle">360</param>
+                            <param id="6" name="Outer angle">360</param>
+                            <param id="7" name="Outer gain">0</param>
+                            <param id="8" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="362096525622451">
+                    <conditions>
+                        <condition behavior="Flash" id="1" name="On flash ended" sid="958555257354477" type="DoorEnemy" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="646730053791460" type="DoorEnemy" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="388182706416620">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="210696197685616" type="WindowSpawn">
+                                    <param id="0" name="Unique ID">DoorEnemy.LocUID</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Timer" id="0" name="Start timer" sid="994844082322150" type="WindowSpawn">
+                                    <param id="0" name="Duration">0.5</param>
+                                    <param id="1" name="Type">0</param>
+                                    <param id="2" name="Tag">&quot;setEmpty&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="665730408417722">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="192411044644836" type="Touch">
+                            <param id="0" name="Object">Maeda</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Timer" id="1" name="Stop timer" sid="365816221145638" type="Maeda">
+                            <param id="0" name="Tag">&quot;retreat&quot;</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="660916145227321" type="Maeda">
+                            <param id="0" name="Animation">Maeda.Location&amp;&quot;Dead&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="25" name="Play at object" sid="448287068574497" type="Audio">
+                            <param id="0" name="Audio file">maeda bongko</param>
+                            <param id="1" name="Loop">0</param>
+                            <param id="2" name="Volume">0</param>
+                            <param id="3" name="Object">Maeda</param>
+                            <param id="4" name="Inner angle">360</param>
+                            <param id="5" name="Outer angle">360</param>
+                            <param id="6" name="Outer gain">0</param>
+                            <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="423177488166968" type="Maeda">
+                            <param id="0" name="&apos;On&apos; time">0.1</param>
+                            <param id="1" name="&apos;Off&apos; time">0.1</param>
+                            <param id="2" name="Duration">1.0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="428464475289418">
+                    <conditions>
+                        <condition behavior="Flash" id="1" name="On flash ended" sid="163006479508529" type="Maeda" />
+                        <condition behavior="Timer" id="0" name="On timer" sid="712624649467972" type="Maeda">
+                            <param id="0" name="Tag">&quot;retreat&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set at X" sid="535418059001972" type="EnemySpawn">
+                            <param id="0" name="X">Maeda.Tipe</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="795891614017948" type="Maeda" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="182501080243463">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="679356149678584" type="WindowSpawn">
+                                    <param id="0" name="Unique ID">Maeda.LocUID</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="794993830417920" type="WindowSpawn">
+                                    <param id="0" name="Instance variable">Empty</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="971799479384046">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="870731162327047" type="WindowSpawn">
+                            <param id="0" name="Tag">&quot;setEmpty&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="953538985986473" type="WindowSpawn">
+                            <param id="0" name="Instance variable">Empty</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

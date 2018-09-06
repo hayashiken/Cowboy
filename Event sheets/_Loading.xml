@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>_Loading</name>
+    <events>
+        <variable constant="0" name="NextLayout" sid="492373952131477" static="0" type="text">Main Menu</variable>
+        <event-block sid="797754556345549">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="805295243801707" type="System">
+                    <param id="0" name="Interval (seconds)">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Add to" sid="771527713588463" type="LoadingText">
+                    <param id="0" name="Instance variable">dot</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="358916599658178">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="158065085051776" type="LoadingText">
+                            <param id="0" name="Instance variable">dot</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Append text" sid="866072466303119" type="LoadingText">
+                            <param id="0" name="Text">&quot; .&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="791800171105046">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="587360943294751" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="126611577573008" type="LoadingText">
+                            <param id="0" name="Instance variable">dot</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="925330981526696" type="LoadingText">
+                            <param id="0" name="Text">&quot;Loading&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="812088349641334">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="191734779675790" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="495018750888924" type="LoadingText">
+                    <param id="0" name="Text">&quot;Complete&quot;</param>
+                </action>
+                <action id="-25" name="Go to layout (by name)" sid="496900988953383" type="System">
+                    <param id="0" name="Layout">NextLayout</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -37,7 +37,7 @@
         <event-block any="1" sid="677741981472525">
             <conditions>
                 <condition id="-6" name="Every X seconds" sid="906632605909731" type="System">
-                    <param id="0" name="Interval (seconds)">20</param>
+                    <param id="0" name="Interval (seconds)">10</param>
                 </condition>
                 <condition id="0" name="On key pressed" sid="342894758985962" type="Keyboard">
                     <param id="0" name="Key">32 (Space)</param>

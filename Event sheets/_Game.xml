@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>_Game</name>
     <events>
+        <include>_Mechanic</include>
         <variable constant="0" name="isPaused" sid="272456340681539" static="0" type="number">0</variable>
         <variable comment="Tutorial Window Condition" constant="0" name="isTutor" sid="437730586655804" static="0" type="number">1</variable>
         <event-block sid="396242645869833">
